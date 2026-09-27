@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Farm first &middot; ReLeaf first visual</title>
+  <meta name="description" content="ReLeaf homepage first-visual study: Farm first." />
+  <link rel="icon" href="../assets/img/logo.png" />
+  <link rel="stylesheet" href="../assets/css/hero.css" />
+</head>
+<body class="v-farm-first">
+
+  <div class="navstrip">
+    <div class="navstrip__tabs" aria-hidden="true"><span>Project</span><span>Wet Lab</span><span>Dry Lab</span><span>Hardware</span><span>Human Practices</span><span>Team</span></div>
+    <a class="navstrip__back" href="../">All variants</a>
+  </div>
+
+  <div class="hero-wrap">
+  <header class="hero" role="img" aria-label="The ReLeaf team walks in single file along a bean trellis toward Farmer Chen, who waits with a basket at the head of the line. A window in the photograph shows, beneath the field, the team's bioreactor on a lab bench.">
+    <canvas></canvas>
+    <div class="hero__text">
+      <h1 class="hero__claim">Every farmer a biomanufacturer.</h1>
+      <p class="hero__line">A Stress-Responsive Optogenetic Bioreactor for Precision Plant Protection.</p>
+    </div>
+    <p class="hero__pill" aria-hidden="true"><span class="pill"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg><span class="mouse">Move to switch on the light</span><span class="touch">Drag to switch on the light</span></span></p>
+  </header>
+  </div>
+
+  <section class="notes">
+    <div class="notes__inner">
+      <p class="notes__kicker">Variant 2</p>
+      <h2>Farm first</h2>
+
+<p>For the reader to look at the farm before anything else. On arrival there is no
+light at all: only the photograph and the headline, for three seconds. Then the hint
+appears, and the light switches on only when the cursor moves, growing from nothing
+over half a second.</p>
+<p>If the cursor stays still for four seconds, the light fades out and the farm is
+whole again. The bench is something the reader goes looking for, not something
+the page opens on.</p>
+<h3>To try in Tune</h3>
+<ul>
+<li>&ldquo;Farm alone first&rdquo;: how long the photograph holds before the light is allowed.</li>
+<li>&ldquo;Off when still&rdquo;: set to 0 to keep the light on once it has been found.</li>
+</ul>
+      <ul class="switcher">
+      <li><a href="../green-light/">1 &middot; Green light</a></li>
+      <li><a href="../farm-first/" aria-current="page">2 &middot; Farm first</a></li>
+      <li><a href="../right-shade/">3 &middot; Right shade</a></li>
+      <li><a href="../dark-focus/">4 &middot; Dark focus</a></li>
+      <li><a href="../scroll-light/">5 &middot; Scroll to light</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <script src="../assets/js/lens-core.js"></script>
+  <script>window.LIGHT_PRESET = {"rest":"none","warm":3,"idleOff":4,"R":0.3};</script>
+  <script src="../assets/js/v-light.js"></script>
+  <script src="../assets/js/tune.js"></script>
+</body>
+</html>

@@ -12,93 +12,92 @@ ROOT = Path(__file__).resolve().parent.parent
 VARIANTS = [
     dict(
         slug="green-light", n="1", name="Green light",
+        preset="{}",
         hint_mouse="Move to shine the light", hint_touch="Drag to shine the light", icon="light",
         notes="""
-<p>The cursor is a green lamp. Where its light falls, the bench shows through the
-field; behind the lamp the lit path narrows and closes over about two seconds,
-like a comet&rsquo;s tail. The project&rsquo;s expression switch is designed to be
-turned on by green light, and the bench has a green LED strip round its edge, so
-the colour is ours. (The switch itself has not been shown to respond yet; the page
-does not say it has.)</p>
-<p>At rest the light sits as a pool in the grass to the right of the queue with
-the reactor inside it, so the first screen already shows both layers. On a first
-visit the lamp comes up the line of students and settles there.</p>
-<p>The trail is one shape that tapers with age, so it moves without beading
-or fog. The light gathers into a larger pool when the lamp is still and thins
-when it moves fast. Green appears only as the light itself; the bench is shown
-in its own colours.</p>
-<h3>Things to decide</h3>
+<p>The base. The whole bench photograph now lies under the farm as one full-frame
+layer, with the reactor standing in the middle of the screen. The cursor is a green
+lamp: where its light falls, the bench shows through; behind it the lit path narrows
+and closes. At rest the light sits in the middle over the reactor, so the first
+screen shows both layers.</p>
+<p>The headline and project line sit in the top left, over the dark of the trees.
+The project&rsquo;s expression switch is designed to answer to green light; the page
+does not say it has been shown to.</p>
+<h3>To try in Tune</h3>
 <ul>
-<li>How long the tail lasts (now 1.5 seconds).</li>
-<li>Where the pool rests. It is in the grass because that is the one part of the
-photograph with nobody in it.</li>
+<li>Size and trail length decide how much of the reactor a single sweep shows.</li>
+<li>Bench scale: 0.74 fits the whole reactor in the resting light; 1 fills the screen with it.</li>
+<li>&ldquo;At rest&rdquo; set to None turns this into Farm first without the timing.</li>
 </ul>""",
     ),
     dict(
-        slug="along-the-line", n="2", name="Along the line",
-        hint_mouse="Follow the line", hint_touch="Drag along the line", icon="right",
+        slug="farm-first", n="2", name="Farm first",
+        preset='{"rest":"none","warm":3,"idleOff":4,"R":0.3}',
+        hint_mouse="Move to switch on the light", hint_touch="Drag to switch on the light", icon="light",
         notes="""
-<p>One hairline runs along the ground under the queue, from the nearest student
-past Farmer Chen to a single point: the bench. The part already walked is drawn
-brighter, like a progress bar drawn by the people in the photograph.</p>
-<p>The window now sits exactly under the cursor; there is no mapping and no lag to
-fight. How far along the route you are sets two things: the size of the window,
-and how far the reactor has slid into it. Near the end point the window is pulled
-onto it and docks, so arriving takes no precision.</p>
-<p>The window at its largest is less than half the height of the frame, and it
-docks beside Chen. When the cursor leaves, it goes back to the dock. On a first
-visit it walks the route once to show the idea.</p>
-<h3>Things to decide</h3>
+<p>For the reader to look at the farm before anything else. On arrival there is no
+light at all: only the photograph and the headline, for three seconds. Then the hint
+appears, and the light switches on only when the cursor moves, growing from nothing
+over half a second.</p>
+<p>If the cursor stays still for four seconds, the light fades out and the farm is
+whole again. The bench is something the reader goes looking for, not something
+the page opens on.</p>
+<h3>To try in Tune</h3>
 <ul>
-<li>Whether the route should be visible all the time or only once the cursor is
-on the photograph.</li>
-<li>The strength of the pull toward the dock.</li>
+<li>&ldquo;Farm alone first&rdquo;: how long the photograph holds before the light is allowed.</li>
+<li>&ldquo;Off when still&rdquo;: set to 0 to keep the light on once it has been found.</li>
 </ul>""",
     ),
     dict(
-        slug="roots", n="3", name="Roots",
-        hint_mouse="Move down to look beneath", hint_touch="Touch low to look beneath", icon="down",
+        slug="right-shade", n="3", name="Right shade",
+        preset='{"benchX":0.74,"benchY":0.6,"rightFade":0.15,"rightFadeW":0.45,"R":0.3}',
+        hint_mouse="Move to shine the light", hint_touch="Drag to shine the light", icon="light",
         notes="""
-<p>The first reading of &ldquo;under the field&rdquo;. The cut is the real ground in the
-photograph: the line where the students&rsquo; feet meet the grass, rising from the
-lower left to Farmer Chen. The bench is underground.</p>
-<p>The lower the cursor, the higher the field lifts, like turning back a sheet of turf.
-Everyone in the line stays whole: the cut runs just under their feet.</p>
-<p>From each person&rsquo;s feet a hairline root draws itself down as the field lifts,
-white at the feet and green where it reaches the reactor. Chen&rsquo;s is a little
-heavier than the rest. The meaning: what we heard
-in the field went into what we built. The machine is fed by the visits above it.
-That is the Integrated Human Practices argument, made in one picture.</p>
-<p>No root is labelled. The homepage does not say which conversation changed which
-part; the Human Practices page does that, with its evidence.</p>
-<h3>Things to decide</h3>
+<p>The farm fades toward black on its right side, at 15%, and the reactor is
+registered to stand in that right third. The light rests there. The queue on the
+left stays untouched and bright; the bench appears where the frame is quietest.</p>
+<p>At 15% the fade is a tint more than a shade. It is on a slider: at 40&ndash;60% the
+right side becomes a dark stage for the bench and the contrast difference is obvious.
+The reactor stands where Chen&rsquo;s line is heading, so the eye runs up the queue and
+lands on it.</p>
+<h3>To try in Tune</h3>
 <ul>
-<li>How far the field rests lifted (now a little under half).</li>
-<li>Whether Chen&rsquo;s root should stand out more, or not at all.</li>
+<li>Right fade strength and width.</li>
+<li>&ldquo;Reactor across&rdquo; moves the bench under the fade.</li>
 </ul>""",
     ),
     dict(
-        slug="membrane", n="4", name="Membrane",
-        hint_mouse="Move up to lift the membrane", hint_touch="Drag up to lift the membrane", icon="updown",
+        slug="dark-focus", n="4", name="Dark focus",
+        preset='{"green":0,"darkRim":0.85,"vignette":0.7,"centreGrow":0.6,"life":0.35,"feather":0.4,"dim":0.1,"R":0.32,"boardDim":0.7}',
+        hint_mouse="Move to look through", hint_touch="Drag to look through", icon="light",
         notes="""
-<p>The second reading of &ldquo;under the field&rdquo;, and the one closest to the hardware.
-The line between the field and the bench is the reactor&rsquo;s membrane. The 0.2&nbsp;&micro;m
-membrane is the part of the design that does two jobs at once: it keeps the
-engineered cells inside the vessel, and it lets the protectant they make pass out
-to the plants.</p>
-<p>So the line is a hairline with pores. Below it, a few rod-shaped cells drift and
-turn back at it; none crosses. Now and then a green point leaves a cell, finds a
-pore, passes through and rises into the field. Containment and delivery are the same line, which is the whole case
-for putting the machine on the farm.</p>
-<p>The cursor sets the membrane&rsquo;s height: lift it to see more of the bench, lower it
-to give the field back. At rest it sits at about three quarters of the way down,
-over the lab table and the pump.</p>
-<h3>Things to decide</h3>
+<p>No green. The farm darkens toward every edge, so the eye is held in the middle of
+the frame, and the hole is a plain dark-edged opening, closer to Marburg&rsquo;s. Around
+the hole the farm darkens further, so the opening reads as depth.</p>
+<p>The hole is larger near the centre and smaller toward the edges, so the most
+powerful view is the one in the middle, where the reactor stands. It barely trails;
+it is a lens, not a lamp.</p>
+<h3>To try in Tune</h3>
 <ul>
-<li>Whether eight cells and their slow trickle of protectant is the right amount of
-motion for a first screen.</li>
-<li>The drawn scale is symbolic: the cells and pores are not to scale with the
-photograph, and the notes should stay the only place that says 0.2&nbsp;&micro;m.</li>
+<li>Centre focus and Dark rim together set how theatrical it is.</li>
+<li>&ldquo;Larger at centre&rdquo; at 1 makes the edges almost closed.</li>
+</ul>""",
+    ),
+    dict(
+        slug="scroll-light", n="5", name="Scroll to light",
+        preset='{"scroll":1,"rest":"none","R":0.2}',
+        hint_mouse="Scroll to switch on the light", hint_touch="Scroll to switch on the light", icon="down",
+        notes="""
+<p>The first screen is the farm, whole. The cursor still carries a small green lamp
+for anyone who moves it. Scrolling is what switches the light on: the frame holds
+still, and a light opens from the reactor at the centre until the bench fills the
+screen. The headline fades as it opens. Then the page carries on.</p>
+<p>This puts the reveal under the reader&rsquo;s own intent to go further, and it makes
+the handover from the first screen to the rest of the homepage a single motion.</p>
+<h3>To try in Tune</h3>
+<ul>
+<li>Size sets the small cursor lamp; set it to its minimum to leave the farm
+untouched until the scroll.</li>
 </ul>""",
     ),
 ]
@@ -134,6 +133,7 @@ def page(v, all_variants):
     <a class="navstrip__back" href="../">All variants</a>
   </div>
 
+  <div class="hero-wrap">
   <header class="hero" role="img" aria-label="The ReLeaf team walks in single file along a bean trellis toward Farmer Chen, who waits with a basket at the head of the line. A window in the photograph shows, beneath the field, the team's bioreactor on a lab bench.">
     <canvas></canvas>
     <div class="hero__text">
@@ -142,6 +142,7 @@ def page(v, all_variants):
     </div>
     <p class="hero__pill" aria-hidden="true"><span class="pill">{ICONS[v["icon"]]}<span class="mouse">{v["hint_mouse"]}</span><span class="touch">{v["hint_touch"]}</span></span></p>
   </header>
+  </div>
 
   <section class="notes">
     <div class="notes__inner">
@@ -155,7 +156,9 @@ def page(v, all_variants):
   </section>
 
   <script src="../assets/js/lens-core.js"></script>
-  <script src="../assets/js/v-{v["slug"]}.js"></script>
+  <script>window.LIGHT_PRESET = {v["preset"]};</script>
+  <script src="../assets/js/v-light.js"></script>
+  <script src="../assets/js/tune.js"></script>
 </body>
 </html>
 """
