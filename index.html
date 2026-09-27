@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ReLeaf first visual</title>
+  <meta name="description" content="Five studies for the ReLeaf homepage's first screen: the team walking Farmer Chen's field on top, the bioreactor bench underneath, after Marburg 2024." />
+  <link rel="icon" href="assets/img/logo.png" />
+  <link rel="stylesheet" href="assets/css/hero.css" />
+  <style>
+    body { background: #fff; color: #1b221e; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 56px clamp(16px, 5vw, 48px) 80px; }
+    .kicker { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--leaf-700); font-weight: 650; margin: 0 0 12px; }
+    h1 { font-size: clamp(2rem, 1.3rem + 2.6vw, 3.2rem); letter-spacing: -.035em; line-height: 1.02; margin: 0 0 18px; }
+    h2 { font-size: 1.35rem; letter-spacing: -.02em; margin: 56px 0 12px; }
+    p { font-size: 1.04rem; line-height: 1.65; color: #2c3530; max-width: 68ch; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 28px; margin-top: 20px; }
+    .card { display: block; text-decoration: none; color: inherit; }
+    .card img { width: 100%; aspect-ratio: 1425 / 752; object-fit: cover; display: block; border-radius: 6px; border: 1px solid #e3e8e5; }
+    .card h3 { font-size: 1.05rem; margin: 14px 0 4px; }
+    .card h3 span { color: var(--leaf-700); margin-right: 6px; }
+    .card p { font-size: .95rem; margin: 0; color: #46514b; }
+    .card:hover h3 { color: var(--leaf-700); }
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 18px; }
+    .pair figure { margin: 0; }
+    .pair img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; display: block; }
+    .pair figcaption { font-size: .88rem; color: #46514b; margin-top: 8px; line-height: 1.5; }
+    code { font-size: .9em; background: #f1f4f2; padding: 1px 5px; border-radius: 4px; }
+    @media (max-width: 640px) { .pair { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="kicker">ReLeaf homepage &middot; first screen</p>
+    <h1>First visual studies</h1>
+    <p>Five ways to open the homepage with two photographs in one frame: the team
+    walking Farmer Chen&rsquo;s field on top, our bioreactor on the bench underneath.
+    Each study is the full first window, with a stand-in nav bar at the wiki&rsquo;s
+    68px. Open one and move the cursor over the photograph; on a phone, drag.</p>
+
+    <h2>Variants</h2>
+    <div class="grid">
+      <a class="card" href="leaf-window/">
+        <img src="assets/img/thumbs/leaf-window.jpg" alt="Leaf window variant: a leaf-shaped hole over the queue shows the bench." loading="lazy" />
+        <h3><span>1</span>Leaf window</h3>
+        <p>A leaf-shaped hole that rests in the grass beside the queue and follows the cursor.</p>
+      </a>
+      <a class="card" href="stoma/">
+        <img src="assets/img/thumbs/stoma.jpg" alt="Stoma variant: a leaf pore between two green guard cells shows the bench, on a pale ground." loading="lazy" />
+        <h3><span>2</span>Stoma</h3>
+        <p>A leaf pore that opens when you hold still. The pale-ground version.</p>
+      </a>
+      <a class="card" href="green-light/">
+        <img src="assets/img/thumbs/green-light.jpg" alt="Green light variant: a swept patch of the frame shows the bench through the farm." loading="lazy" />
+        <h3><span>3</span>Green light</h3>
+        <p>The cursor is a green lamp. The bench shows where it passes, then fades.</p>
+      </a>
+      <a class="card" href="along-the-line/">
+        <img src="assets/img/thumbs/along-the-line.jpg" alt="Along the line variant: a large round window at the head of the queue shows the bench." loading="lazy" />
+        <h3><span>4</span>Along the line</h3>
+        <p>The window walks up the queue and opens where Farmer Chen stands.</p>
+      </a>
+      <a class="card" href="under-the-field/">
+        <img src="assets/img/thumbs/under-the-field.jpg" alt="Under the field variant: the farm's lower edge, cut as a serrated leaf margin, lifts to show the bench." loading="lazy" />
+        <h3><span>5</span>Under the field</h3>
+        <p>The field&rsquo;s lower edge is a leaf margin. Bring the cursor down and it lifts.</p>
+      </a>
+    </div>
+
+    <h2>What we took from Marburg</h2>
+    <p>Marburg 2024 put two photographs in the same frame, a burned clearing on top and
+    a meadow of dandelions underneath, and cut a small soft hole in the top one wherever
+    the cursor went. Around it, a dark vignette.</p>
+    <p>Their lower layer is a texture: any spot the hole uncovers shows flowers, so the
+    hole can stay small (about 5% of the width) and go anywhere. Ours is one object on a
+    bench. A small hole would show a piece of whiteboard or a cable. So every variant
+    here either makes the window large enough to hold the reactor, or knows where the
+    reactor is and brings it into the window. The top and bottom layers also mean
+    something different: theirs are problem and answer; ours are the same team in two
+    places, at the farm and at the bench.</p>
+
+    <h2>The two photographs</h2>
+    <div class="pair">
+      <figure>
+        <img src="assets/img/farm-1400.jpg" alt="The team in ReLeaf shirts walks single file along a bean trellis toward Farmer Chen, who waits with a basket." loading="lazy" />
+        <figcaption>Top layer. The queue runs from the nearest student at the lower left up to
+        Farmer Chen at the head of the line. The grass to the right of the line is the only
+        part of the frame with nobody in it, so most variants rest their window there.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/bench-1400.jpg" alt="The bioreactor on a lab bench edged with green LEDs, in front of a whiteboard that reads ReLeaf and On-site, On-demand." loading="lazy" />
+        <figcaption>Bottom layer. The current bench photograph; a new one follows next week
+        with the automated reactor. Swapping it is described in the README.</figcaption>
+      </figure>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,153 @@
+/* =============================================================================
+   hero.css: shared by every variant.
+   The strip at the top stands in for the wiki's site nav (68px, ink) so that
+   the hero below it is exactly the first window a reader gets.
+   ========================================================================== */
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/inter-variable.woff2") format("woff2");
+}
+
+:root {
+  --ink: #070b09;
+  --ink-2: #111814;
+  --cream: #f3eed2;          /* the team shirts */
+  --leaf-700: #23684a;
+  --leaf-500: #4f9c6f;
+  --leaf-200: #cfe4d8;
+  --led: #6fe39a;            /* the bench's LED strip */
+  --nav-h: 68px;
+  --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--font);
+  font-feature-settings: "ss01", "cv11";
+}
+
+/* ---- stand-in nav ---------------------------------------------------------- */
+.navstrip {
+  position: sticky; top: 0; z-index: 50;
+  height: var(--nav-h);
+  display: flex; align-items: center; gap: 28px;
+  padding: 0 clamp(16px, 3vw, 40px);
+  background: var(--ink);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.navstrip__logo { width: 44px; height: 44px; display: block; }
+.navstrip__tabs { display: flex; gap: 26px; font-size: .9rem; color: rgba(255,255,255,.72); }
+.navstrip__tabs span { white-space: nowrap; }
+.navstrip__back {
+  margin-left: auto; font-size: .82rem; color: rgba(255,255,255,.6);
+  text-decoration: none; border: 1px solid rgba(255,255,255,.18);
+  padding: 6px 12px; border-radius: 999px; white-space: nowrap;
+}
+.navstrip__back:hover { color: #fff; border-color: rgba(255,255,255,.4); }
+@media (max-width: 860px) { .navstrip__tabs { display: none; } }
+
+/* ---- the hero ---------------------------------------------------------------- */
+.hero {
+  position: relative;
+  height: calc(100svh - var(--nav-h));
+  min-height: 480px;
+  overflow: hidden;
+  background: var(--ink);
+  touch-action: pan-y;
+  cursor: none;
+}
+.hero canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+  opacity: 0; transition: opacity .9s ease;
+}
+.hero.is-ready canvas { opacity: 1; }
+@media (hover: none) { .hero { cursor: auto; } }
+
+.hero__text {
+  position: absolute; z-index: 2;
+  left: clamp(20px, 5.5vw, 88px);
+  top: clamp(24px, 7vh, 72px);
+  pointer-events: none; user-select: none;
+  max-width: min(640px, 80vw);
+}
+.hero__mark {
+  display: block;
+  width: clamp(150px, 15vw, 250px); height: auto;
+  margin: 0 0 clamp(8px, 1.4vh, 16px) -2px;
+  filter: drop-shadow(0 2px 18px rgba(0,0,0,.35));
+}
+.hero__claim {
+  margin: 0;
+  font-size: clamp(1.55rem, .9rem + 2.1vw, 3.1rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -.032em;
+  text-shadow: 0 2px 24px rgba(0,0,0,.45);
+}
+
+.hero__caption {
+  position: absolute; z-index: 2;
+  left: clamp(20px, 5.5vw, 88px); bottom: 18px;
+  margin: 0; max-width: 40ch;
+  font-size: .78rem; line-height: 1.45; color: rgba(255,255,255,.66);
+  pointer-events: none;
+}
+.hero__hint {
+  position: absolute; z-index: 2;
+  right: clamp(20px, 3vw, 40px); bottom: 18px;
+  margin: 0; font-size: .78rem; color: rgba(255,255,255,.66);
+  pointer-events: none;
+  transition: opacity .6s ease;
+}
+.hero__hint.is-gone { opacity: 0; }
+.hero__hint .touch { display: none; }
+@media (hover: none) { .hero__hint .mouse { display: none; } .hero__hint .touch { display: inline; } }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---- below the fold: notes on the variant, not part of the design ---------- */
+.notes {
+  background: #fff; color: #1b221e;
+  padding: clamp(40px, 7vw, 88px) clamp(20px, 6vw, 96px) 64px;
+}
+.notes__inner { max-width: 760px; }
+.notes__kicker { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--leaf-700); font-weight: 650; margin: 0 0 10px; }
+.notes h2 { font-size: 1.9rem; letter-spacing: -.025em; line-height: 1.1; margin: 0 0 18px; }
+.notes h3 { font-size: 1.05rem; margin: 30px 0 8px; }
+.notes p, .notes li { font-size: 1.02rem; line-height: 1.65; color: #2c3530; }
+.notes ul { padding-left: 1.2em; }
+.notes code { font-size: .9em; background: #f1f4f2; padding: 1px 5px; border-radius: 4px; }
+.switcher {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin: 36px 0 0; padding: 0; list-style: none;
+}
+.switcher a {
+  display: inline-block; padding: 8px 14px; border-radius: 999px;
+  border: 1px solid #cfd8d2; color: #1b221e; text-decoration: none; font-size: .9rem;
+}
+.switcher a:hover { border-color: var(--leaf-700); color: var(--leaf-700); }
+.switcher a[aria-current] { background: #1b221e; color: #fff; border-color: #1b221e; }
+
+/* ---- variant 2: the pale ground ------------------------------------------- */
+.v-stoma .hero { background: #f6f4ea; }
+.v-stoma .hero__claim { color: #0f1a14; text-shadow: none; }
+.v-stoma .hero__mark { filter: none; }
+.v-stoma .hero__caption, .v-stoma .hero__hint { color: rgba(15,26,20,.72); }
+
+/* ---- variant 5: the resting band of bench runs along the bottom ----------- */
+.v-under-the-field .hero__caption,
+.v-under-the-field .hero__hint { bottom: calc(5.5% + 16px); }
+@media (max-width: 520px) {
+  .hero__caption { max-width: 58%; }
+}
