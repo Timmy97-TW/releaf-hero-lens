@@ -8,12 +8,11 @@ window.capture = async function (name) {
   var x = out.getContext("2d");
   x.drawImage(c, 0, 0, hr.width, hr.height);
   function put(el, fn) { var r = el.getBoundingClientRect(); fn(r.left - hr.left, r.top - hr.top, r); }
-  put(document.querySelector(".hero__mark"), function (l, t, r) { x.drawImage(document.querySelector(".hero__mark"), l, t, r.width, r.height); });
-  document.querySelectorAll(".hero__claim, .hero__caption, .hero__hint, .hero__extra").forEach(function (el) {
+  document.querySelectorAll(".hero__claim, .hero__line, .hero__caption, .hero__hint").forEach(function (el) {
     var cs = getComputedStyle(el);
     if (cs.display === "none" || cs.opacity === "0") return;
     x.font = cs.fontWeight + " " + cs.fontSize + " " + cs.fontFamily;
-    x.fillStyle = cs.color; x.textBaseline = "top";
+    x.fillStyle = cs.color; x.textBaseline = "top"; x.letterSpacing = cs.letterSpacing;
     var range = document.createRange(); range.selectNodeContents(el);
     Array.from(range.getClientRects()).forEach(function () {});
     // draw line by line using the element's text wrapped at its own width

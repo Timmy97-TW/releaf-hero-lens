@@ -1,6 +1,6 @@
 # ReLeaf first visual
 
-Five studies for the first screen of the ReLeaf homepage (GEMS Taiwan, iGEM 2026).
+Four studies for the first screen of the ReLeaf homepage (GEMS Taiwan, iGEM 2026).
 The team walking Farmer Chen's field is the top layer and the bioreactor bench is
 the layer underneath, after the two-layer flashlight hero of Marburg 2024.
 
@@ -8,11 +8,12 @@ Live: <https://timmy97-tw.github.io/releaf-hero-lens/>
 
 | # | Variant | Idea |
 |---|---------|------|
-| 1 | [Leaf window](leaf-window/) | A leaf-shaped hole resting in the grass beside the queue; follows the cursor |
-| 2 | [Stoma](stoma/) | A leaf pore that opens when the cursor holds still; pale ground |
-| 3 | [Green light](green-light/) | The cursor is a green lamp; the bench shows where it passed, then fades |
-| 4 | [Along the line](along-the-line/) | The window walks up the queue and opens where Farmer Chen stands |
-| 5 | [Under the field](under-the-field/) | The field's lower edge is a leaf margin that lifts toward the cursor |
+| 1 | [Green light](green-light/) | The cursor is a green lamp; the bench switches on under its light and the lit path closes behind it |
+| 2 | [Along the line](along-the-line/) | A route under the queue; the window follows the cursor and docks past Farmer Chen |
+| 3 | [Roots](roots/) | Lift the field; a root runs from each person's feet to the reactor underground |
+| 4 | [Membrane](membrane/) | The farm/bench line is the reactor's membrane: cells stay below, protectant rises through |
+
+Round one's Leaf window, Stoma and Under the field are in git history (`2cd2e0a`).
 
 ## Layout
 

@@ -187,7 +187,7 @@
       var p = S.pointer;
       /* The window trails the cursor a little, the way a leaf lags a hand.
          With reduced motion it sits exactly under it. */
-      var k = reduced ? 1 : 1 - Math.pow(0.0009, S.dt);
+      var k = reduced ? 1 : 1 - Math.exp(-(opts.follow || 7) * S.dt);
       var ox = p.x, oy = p.y;
       p.x = lerp(p.x, p.tx, k);
       p.y = lerp(p.y, p.ty, k);
