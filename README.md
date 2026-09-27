@@ -6,7 +6,7 @@ the layer underneath, after the two-layer flashlight hero of Marburg 2024.
 
 Live: <https://timmy97-tw.github.io/releaf-hero-lens/>
 
-Round four: Green light was chosen. Five directions for it, all driven by one
+Round four: Green light was chosen. Four directions for it, all driven by one
 engine (`assets/js/v-light.js`) with a preset per page and a Tune panel
 (`assets/js/tune.js`, "Tune" in the top bar) that edits every setting live and
 copies it as a link.
@@ -15,12 +15,11 @@ copies it as a link.
 |---|---------|-----------|
 | 1 | [Green light](green-light/) | Base: full bench under the farm, reactor centred, light resting on it |
 | 2 | [Farm first](farm-first/) | No light for 3 s; switches on with movement, off after 4 s still |
-| 3 | [Right shade](right-shade/) | 15% black fade on the right, reactor standing in it |
-| 4 | [Dark focus](dark-focus/) | No green: dark lens, larger at the centre, centre vignette |
-| 5 | [Scroll to light](scroll-light/) | Scrolling opens the light from the reactor to full frame |
+| 3 | [Dark focus](dark-focus/) | No green: dark lens, larger at the centre, centre vignette |
+| 4 | [Scroll to light](scroll-light/) | Scrolling opens the light from the reactor to full frame |
 
 Earlier rounds are in git history: `2cd2e0a` (five first studies), `4f3ebaf`
-(four variants), `4c96965` (clean pass on four variants).
+(four variants), `4c96965` (clean pass on four variants), `4ab125b` (with Right shade).
 
 ## Layout
 

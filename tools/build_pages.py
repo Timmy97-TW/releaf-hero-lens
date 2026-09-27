@@ -49,25 +49,7 @@ the page opens on.</p>
 </ul>""",
     ),
     dict(
-        slug="right-shade", n="3", name="Right shade",
-        preset='{"benchX":0.74,"benchY":0.6,"rightFade":0.15,"rightFadeW":0.45,"R":0.3}',
-        hint_mouse="Move to shine the light", hint_touch="Drag to shine the light", icon="light",
-        notes="""
-<p>The farm fades toward black on its right side, at 15%, and the reactor is
-registered to stand in that right third. The light rests there. The queue on the
-left stays untouched and bright; the bench appears where the frame is quietest.</p>
-<p>At 15% the fade is a tint more than a shade. It is on a slider: at 40&ndash;60% the
-right side becomes a dark stage for the bench and the contrast difference is obvious.
-The reactor stands where Chen&rsquo;s line is heading, so the eye runs up the queue and
-lands on it.</p>
-<h3>To try in Tune</h3>
-<ul>
-<li>Right fade strength and width.</li>
-<li>&ldquo;Reactor across&rdquo; moves the bench under the fade.</li>
-</ul>""",
-    ),
-    dict(
-        slug="dark-focus", n="4", name="Dark focus",
+        slug="dark-focus", n="3", name="Dark focus",
         preset='{"green":0,"darkRim":0.85,"vignette":0.7,"centreGrow":0.6,"life":0.35,"feather":0.4,"dim":0.1,"R":0.32,"boardDim":0.7}',
         hint_mouse="Move to look through", hint_touch="Drag to look through", icon="light",
         notes="""
@@ -84,7 +66,7 @@ it is a lens, not a lamp.</p>
 </ul>""",
     ),
     dict(
-        slug="scroll-light", n="5", name="Scroll to light",
+        slug="scroll-light", n="4", name="Scroll to light",
         preset='{"scroll":1,"rest":"none","R":0.2}',
         hint_mouse="Scroll to switch on the light", hint_touch="Scroll to switch on the light", icon="down",
         notes="""
