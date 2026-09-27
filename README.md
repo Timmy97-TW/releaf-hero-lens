@@ -13,7 +13,10 @@ Live: <https://timmy97-tw.github.io/releaf-hero-lens/>
 | 3 | [Roots](roots/) | Lift the field; a root runs from each person's feet to the reactor underground |
 | 4 | [Membrane](membrane/) | The farm/bench line is the reactor's membrane: cells stay below, protectant rises through |
 
-Round one's Leaf window, Stoma and Under the field are in git history (`2cd2e0a`).
+Round one's Leaf window, Stoma and Under the field are in git history (`2cd2e0a`);
+round two's more decorated versions of these four are at `4f3ebaf`. Round three is
+the clean pass: centred type with a staged entrance, one frosted hint pill, spring
+motion, 1px hairlines, black grounds, green only as the accent.
 
 ## Layout
 

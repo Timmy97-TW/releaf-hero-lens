@@ -4,96 +4,109 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ReLeaf first visual</title>
-  <meta name="description" content="Four studies for the ReLeaf homepage's first screen: the team walking Farmer Chen's field on top, the bioreactor bench underneath, after Marburg 2024." />
+  <meta name="description" content="Four studies for the ReLeaf homepage's first screen: the team walking Farmer Chen's field above, the bioreactor on the bench beneath." />
   <link rel="icon" href="assets/img/logo.png" />
   <link rel="stylesheet" href="assets/css/hero.css" />
   <style>
-    body { background: #fff; color: #1b221e; }
-    .wrap { max-width: 1120px; margin: 0 auto; padding: 56px clamp(16px, 5vw, 48px) 80px; }
-    .kicker { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--leaf-700); font-weight: 650; margin: 0 0 12px; }
-    h1 { font-size: clamp(2rem, 1.3rem + 2.6vw, 3.2rem); letter-spacing: -.035em; line-height: 1.02; margin: 0 0 18px; }
-    h2 { font-size: 1.35rem; letter-spacing: -.02em; margin: 56px 0 12px; }
-    p { font-size: 1.04rem; line-height: 1.65; color: #2c3530; max-width: 68ch; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 28px; margin-top: 20px; }
-    .card { display: block; text-decoration: none; color: inherit; }
-    .card img { width: 100%; aspect-ratio: 1425 / 752; object-fit: cover; display: block; border-radius: 6px; border: 1px solid #e3e8e5; }
-    .card h3 { font-size: 1.05rem; margin: 14px 0 4px; }
-    .card h3 span { color: var(--leaf-700); margin-right: 6px; }
-    .card p { font-size: .95rem; margin: 0; color: #46514b; }
-    .card:hover h3 { color: var(--leaf-700); }
-    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 18px; }
+    body { background: #fff; color: var(--ink); letter-spacing: -.016em; }
+    .top { text-align: center; padding: clamp(72px, 12vw, 140px) 22px clamp(40px, 6vw, 64px); }
+    .eyebrow { font-size: 1.05rem; font-weight: 600; color: var(--ink-2); margin: 0 0 10px; }
+    h1 { font-size: clamp(2.6rem, 1.6rem + 3.6vw, 4.8rem); font-weight: 650; letter-spacing: -.04em; line-height: 1.03; margin: 0; }
+    .lede { font-size: clamp(1.15rem, 1rem + .5vw, 1.5rem); line-height: 1.38; color: var(--ink-2); max-width: 34ch; margin: 18px auto 0; font-weight: 450; }
+    .grid { max-width: 1180px; margin: 0 auto; padding: 0 22px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .card { display: block; text-decoration: none; color: inherit; background: #f5f5f7; border-radius: 22px; overflow: hidden; transition: transform .45s var(--ease), box-shadow .45s var(--ease); }
+    .card:hover { transform: scale(1.012); box-shadow: 0 12px 40px rgba(0,0,0,.10); }
+    .card img { width: 100%; aspect-ratio: 1425 / 752; object-fit: cover; display: block; }
+    .card__body { padding: 26px 30px 30px; }
+    .card__n { font-size: .9rem; font-weight: 600; color: var(--ink-2); margin: 0 0 4px; }
+    .card h2 { font-size: 1.75rem; font-weight: 650; letter-spacing: -.03em; margin: 0 0 8px; }
+    .card p { font-size: 1.05rem; line-height: 1.47; color: var(--ink); margin: 0 0 14px; }
+    .card .more { font-size: 1.05rem; color: var(--link); }
+    .card .more::after { content: " \203A"; }
+    .read { max-width: 692px; margin: 0 auto; padding: clamp(80px, 10vw, 128px) 22px 110px; }
+    .read h3 { font-size: clamp(1.9rem, 1.4rem + 1.6vw, 2.6rem); font-weight: 650; letter-spacing: -.035em; line-height: 1.08; margin: 0 0 20px; }
+    .read h3 + p { margin-top: 0; }
+    .read p { font-size: 1.13rem; line-height: 1.55; margin: 0 0 1.05em; }
+    .read section + section { margin-top: 72px; }
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0 0; }
     .pair figure { margin: 0; }
-    .pair img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; display: block; }
-    .pair figcaption { font-size: .88rem; color: #46514b; margin-top: 8px; line-height: 1.5; }
-    code { font-size: .9em; background: #f1f4f2; padding: 1px 5px; border-radius: 4px; }
+    .pair img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; border-radius: 14px; }
+    .pair figcaption { font-size: .9rem; line-height: 1.45; color: var(--ink-2); margin-top: 10px; }
     @media (max-width: 640px) { .pair { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <p class="kicker">ReLeaf homepage &middot; first screen</p>
-    <h1>First visual studies</h1>
-    <p>Four ways to open the homepage with two photographs in one frame: the team
-    walking Farmer Chen&rsquo;s field on top, our bioreactor on the bench underneath.
-    Each study is the full first window, with a stand-in nav bar at the wiki&rsquo;s
-    68px. Open one and move the cursor over the photograph; on a phone, drag.</p>
+  <header class="top">
+    <p class="eyebrow">ReLeaf homepage &middot; first screen</p>
+    <h1>Above the field.<br />Beneath it, the bench.</h1>
+    <p class="lede">Four studies for the first thing a reader sees. Open one and move across the photograph.</p>
+  </header>
 
-    <h2>Variants</h2>
+  <main>
     <div class="grid">
       <a class="card" href="green-light/">
-        <img src="assets/img/thumbs/green-light.jpg" alt="Green light variant: a pool of green light in the grass beside the queue shows the bioreactor." loading="lazy" />
-        <h3><span>1</span>Green light</h3>
-        <p>The cursor is a green lamp. The bench switches on under its light, and the lit path closes behind it.</p>
+        <img src="assets/img/thumbs/green-light.jpg?v=3" alt="Green light: a pool of light in the grass beside the queue shows the bioreactor." loading="lazy" />
+        <div class="card__body">
+          <p class="card__n">1</p>
+          <h2>Green light</h2>
+          <p>The cursor is a lamp. The bench appears where its light falls, and closes behind it.</p>
+          <span class="more">Open</span>
+        </div>
       </a>
       <a class="card" href="along-the-line/">
-        <img src="assets/img/thumbs/along-the-line.jpg" alt="Along the line variant: a dotted route under the queue ends in a round window beside Farmer Chen showing the bioreactor." loading="lazy" />
-        <h3><span>2</span>Along the line</h3>
-        <p>A route under the students&rsquo; feet. The window follows the cursor and docks at the end of the line, beside Chen.</p>
+        <img src="assets/img/thumbs/along-the-line.jpg?v=3" alt="Along the line: a hairline under the queue ends in a round window beside Farmer Chen showing the bioreactor." loading="lazy" />
+        <div class="card__body">
+          <p class="card__n">2</p>
+          <h2>Along the line</h2>
+          <p>A hairline under the students&rsquo; feet. It ends at the bench, beside Farmer Chen.</p>
+          <span class="more">Open</span>
+        </div>
       </a>
       <a class="card" href="roots/">
-        <img src="assets/img/thumbs/roots.jpg" alt="Roots variant: the field is lifted and roots run from each person's feet down to the bioreactor underground." loading="lazy" />
-        <h3><span>3</span>Roots</h3>
-        <p>Under the field, first reading. Lift the field and a root runs from each person down to the reactor.</p>
+        <img src="assets/img/thumbs/roots.jpg?v=3" alt="Roots: the field lifts, and a root runs from each person's feet down to the bioreactor underground." loading="lazy" />
+        <div class="card__body">
+          <p class="card__n">3</p>
+          <h2>Roots</h2>
+          <p>Lift the field. From every person in the line, a root runs down to the reactor.</p>
+          <span class="more">Open</span>
+        </div>
       </a>
       <a class="card" href="membrane/">
-        <img src="assets/img/thumbs/membrane.jpg" alt="Membrane variant: a porous line separates the field from the bioreactor; cells stay below, protectant rises through." loading="lazy" />
-        <h3><span>4</span>Membrane</h3>
-        <p>Under the field, second reading. The line between farm and bench is the reactor&rsquo;s membrane: cells stay, protectant crosses.</p>
+        <img src="assets/img/thumbs/membrane.jpg?v=3" alt="Membrane: a porous hairline separates the field from the bioreactor; cells stay below while protectant rises." loading="lazy" />
+        <div class="card__body">
+          <p class="card__n">4</p>
+          <h2>Membrane</h2>
+          <p>The line between farm and bench is the reactor&rsquo;s membrane. The cells stay. The protectant crosses.</p>
+          <span class="more">Open</span>
+        </div>
       </a>
     </div>
 
-    <h2>Round two</h2>
-    <p>Leaf window and Stoma are gone. Green light and Along the line were rebuilt for
-    smoother, more direct control. The old Under the field split into two readings with
-    something to say: Roots (the visits feed the machine) and Membrane (the line that
-    keeps the cells in is the line that lets the protectant out). The ReLeaf wordmark is
-    off the hero; the slogan and the project line carry it.</p>
-
-    <h2>What we took from Marburg</h2>
-    <p>Marburg 2024 put two photographs in the same frame, a burned clearing on top and
-    a meadow of dandelions underneath, and cut a small soft hole in the top one wherever
-    the cursor went. Around it, a dark vignette.</p>
-    <p>Their lower layer is a texture: any spot the hole uncovers shows flowers, so the
-    hole can stay small (about 5% of the width) and go anywhere. Ours is one object on a
-    bench. A small hole would show a piece of whiteboard or a cable. So every variant
-    here either makes the window large enough to hold the reactor, or knows where the
-    reactor is and brings it into the window. The top and bottom layers also mean
-    something different: theirs are problem and answer; ours are the same team in two
-    places, at the farm and at the bench.</p>
-
-    <h2>The two photographs</h2>
-    <div class="pair">
-      <figure>
-        <img src="assets/img/farm-1400.jpg" alt="The team in ReLeaf shirts walks single file along a bean trellis toward Farmer Chen, who waits with a basket." loading="lazy" />
-        <figcaption>Top layer. The queue runs from the nearest student at the lower left up to
-        Farmer Chen at the head of the line. The grass to the right of the line is the only
-        part of the frame with nobody in it, so the resting windows sit there.</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/img/bench-1400.jpg" alt="The bioreactor on a lab bench edged with green LEDs, in front of a whiteboard that reads ReLeaf and On-site, On-demand." loading="lazy" />
-        <figcaption>Bottom layer. The current bench photograph; a new one follows next week
-        with the automated reactor. Swapping it is described in the README.</figcaption>
-      </figure>
+    <div class="read">
+      <section>
+        <h3>From Marburg, and away from it.</h3>
+        <p>Marburg 2024 put two photographs in one frame and cut a small soft hole in the
+        top one wherever the cursor went. Their lower layer was a meadow of dandelions,
+        so any spot the hole found was full of flowers.</p>
+        <p>Ours is one machine on one bench. So each study either makes the window large
+        enough to hold the reactor, or knows where the reactor is and brings it to the
+        window. And the two layers mean something new: not problem and answer, but the
+        same team in two places.</p>
+      </section>
+      <section>
+        <h3>The two photographs.</h3>
+        <div class="pair">
+          <figure>
+            <img src="assets/img/farm-1400.jpg" alt="The team in ReLeaf shirts walks single file along a bean trellis toward Farmer Chen, who waits with a basket." loading="lazy" />
+            <figcaption>Above. The queue runs from the nearest student up to Farmer Chen at the head of the line.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/img/bench-1400.jpg" alt="The bioreactor on a lab bench edged with green LEDs, in front of a whiteboard." loading="lazy" />
+            <figcaption>Beneath. The current bench photograph; the automated reactor is photographed next week.</figcaption>
+          </figure>
+        </div>
+      </section>
     </div>
   </main>
 </body>

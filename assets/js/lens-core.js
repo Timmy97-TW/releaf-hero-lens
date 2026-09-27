@@ -68,6 +68,13 @@
     return { x: (W - w) * fx, y: (H - h) * fy, w: w, h: h, s: s };
   }
 
+  /* exact step of a critically damped spring toward target, angular
+     frequency w (rad/s): returns [position, velocity] */
+  function spring(x, v, target, w, dt) {
+    var d = x - target, e = Math.exp(-w * dt);
+    return [target + (d + (v + w * d) * dt) * e, (v - w * (v + w * d) * dt) * e];
+  }
+
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
   function lerp(a, b, t) { return a + (b - a) * t; }
   function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
@@ -121,8 +128,58 @@
         return ((c[2] - c[0]) * b.naturalWidth) / ((c[3] - c[1]) * b.naturalHeight);
       },
       portrait: false,
-      leafPath: leafPath, clamp: clamp, lerp: lerp, ease: ease
+      leafPath: leafPath, clamp: clamp, lerp: lerp, ease: ease,
+      /* S.to("name", target, w): a spring-smoothed value kept in S.state */
+      to: function (key, target, w) {
+        var st = S.state;
+        if (st[key] === undefined || S.reduced) { st[key] = target; st[key + "$v"] = 0; return target; }
+        var r = spring(st[key], st[key + "$v"] || 0, target, w || 10, S.dt);
+        st[key] = r[0]; st[key + "$v"] = r[1];
+        return r[0];
+      },
+      /* The one photographic grade every variant shares: a slight overall
+         dim, a soft dark at the top for the headline, and a fall to black at
+         the bottom for the page that follows. Pass a lift to draw the photo
+         raised by that many pixels. */
+      grade: function (lift) {
+        var r = S.farmRect;
+        ctx.drawImage(S.farm, r.x, r.y - (lift || 0), r.w, r.h);
+        ctx.fillStyle = "rgba(0,0,0,0.16)";
+        ctx.fillRect(0, 0, S.W, S.H);
+        var t = ctx.createLinearGradient(0, 0, 0, S.H * 0.46);
+        t.addColorStop(0, "rgba(0,0,0,0.62)");
+        t.addColorStop(0.55, "rgba(0,0,0,0.22)");
+        t.addColorStop(1, "rgba(0,0,0,0)");
+        ctx.fillStyle = t; ctx.fillRect(0, 0, S.W, S.H * 0.46);
+      },
+      fadeBottom: function (h, a) {
+        h = h || S.H * 0.16;
+        var b = ctx.createLinearGradient(0, S.H - h, 0, S.H);
+        b.addColorStop(0, "rgba(0,0,0,0)");
+        b.addColorStop(1, "rgba(0,0,0," + (a === undefined ? 0.7 : a) + ")");
+        ctx.fillStyle = b; ctx.fillRect(0, S.H - h, S.W, h);
+      },
+      /* Fades the headline back when a variant needs the space it sits in. */
+      dimText: function (v) {
+        if (!textEl) return;
+        v = clamp(v, 0, 1);
+        if (Math.abs(v - (S.state.$dim || 0)) < 0.01) return;
+        S.state.$dim = v;
+        textEl.style.opacity = String(1 - v * 0.8);
+      },
+      hint: function () { if (pill) pill.classList.add("is-gone"); },
+      /* a small white point with a soft glow, for when the cursor is hidden */
+      dot: function (x, y, r, color) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(x, y, r || 3.5, 0, Math.PI * 2);
+        ctx.fillStyle = color || "rgba(255,255,255,0.95)";
+        ctx.shadowColor = "rgba(0,0,0,0.35)"; ctx.shadowBlur = 8;
+        ctx.fill();
+        ctx.restore();
+      }
     };
+    var textEl = hero.querySelector(".hero__text"), pill = hero.querySelector(".hero__pill");
 
     function resize() {
       var rect = hero.getBoundingClientRect();
@@ -185,14 +242,15 @@
       S.t += dt;
 
       var p = S.pointer;
-      /* The window trails the cursor a little, the way a leaf lags a hand.
-         With reduced motion it sits exactly under it. */
-      var k = reduced ? 1 : 1 - Math.exp(-(opts.follow || 7) * S.dt);
-      var ox = p.x, oy = p.y;
-      p.x = lerp(p.x, p.tx, k);
-      p.y = lerp(p.y, p.ty, k);
-      p.vx = lerp(p.vx, (p.x - ox) / Math.max(S.dt, 1e-3), 0.2);
-      p.vy = lerp(p.vy, (p.y - oy) / Math.max(S.dt, 1e-3), 0.2);
+      /* The pointer is followed by a critically damped spring: it starts
+         gently, arrives without overshoot, and never lags by a fixed
+         fraction the way a plain lerp does. Reduced motion: no spring. */
+      if (reduced) { p.vx = (p.tx - p.x) / Math.max(dt, 1e-3); p.vy = (p.ty - p.y) / Math.max(dt, 1e-3); p.x = p.tx; p.y = p.ty; }
+      else {
+        var w = opts.follow || 18;
+        var sx = spring(p.x, p.vx, p.tx, w, dt), sy = spring(p.y, p.vy, p.ty, w, dt);
+        p.x = sx[0]; p.vx = sx[1]; p.y = sy[0]; p.vy = sy[1];
+      }
 
       ctx.setTransform(S.dpr, 0, 0, S.dpr, 0, 0);
       ctx.clearRect(0, 0, S.W, S.H);
@@ -225,7 +283,7 @@
         pt.inside = true; pt.everMoved = true;
         pt.x = pt.tx = a[0] * S.W; pt.y = pt.ty = a[1] * S.H;
       }
-      if (q.get("still")) { canvas.style.transition = "none"; window.__lensStep(Number(q.get("still"))); frozen = true; }
+      if (q.get("still")) { hero.classList.add("is-still"); canvas.style.transition = "none"; window.__lensStep(Number(q.get("still"))); frozen = true; }
       kick();
     });
 

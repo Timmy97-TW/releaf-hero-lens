@@ -1,7 +1,8 @@
 /* =============================================================================
    hero.css: shared by every variant.
-   The strip at the top stands in for the wiki's site nav (68px, ink) so that
-   the hero below it is exactly the first window a reader gets.
+   One idea per screen, type that does the work, and nothing on the photograph
+   that is not the photograph, the headline, or the one control. Black ground,
+   white type, hairlines at 1px, green used once, as the accent.
    ========================================================================== */
 
 @font-face {
@@ -13,137 +14,167 @@
 }
 
 :root {
-  --ink: #070b09;
-  --ink-2: #111814;
-  --cream: #f3eed2;          /* the team shirts */
-  --leaf-700: #23684a;
-  --leaf-500: #4f9c6f;
-  --leaf-200: #cfe4d8;
-  --led: #6fe39a;            /* the bench's LED strip */
+  --black: #000;
+  --white: #fff;
+  --text: #f5f5f7;
+  --text-2: rgba(245,245,247,.72);
+  --ink: #1d1d1f;
+  --ink-2: #6e6e73;
+  --accent: #34c759;
+  --link: #23684a;
   --nav-h: 68px;
-  --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+  --ease: cubic-bezier(.28,.11,.32,1);
 }
 
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 body {
   margin: 0;
-  background: var(--ink);
-  color: #fff;
+  background: var(--black);
+  color: var(--text);
   font-family: var(--font);
-  font-feature-settings: "ss01", "cv11";
+  font-feature-settings: "cv11", "ss03";
+  letter-spacing: -.011em;
 }
 
-/* ---- stand-in nav ---------------------------------------------------------- */
+/* ---- stand-in nav: quiet, translucent ---------------------------------- */
 .navstrip {
   position: sticky; top: 0; z-index: 50;
   height: var(--nav-h);
-  display: flex; align-items: center; gap: 28px;
+  display: flex; align-items: center; justify-content: center;
   padding: 0 clamp(16px, 3vw, 40px);
-  background: var(--ink);
-  border-bottom: 1px solid rgba(255,255,255,.06);
+  background: rgba(0,0,0,.78);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
 }
-.navstrip__logo { width: 44px; height: 44px; display: block; }
-.navstrip__tabs { display: flex; gap: 26px; font-size: .9rem; color: rgba(255,255,255,.72); }
+.navstrip__tabs { display: flex; gap: clamp(20px, 3vw, 40px); font-size: .8rem; color: rgba(255,255,255,.8); }
 .navstrip__tabs span { white-space: nowrap; }
 .navstrip__back {
-  margin-left: auto; font-size: .82rem; color: rgba(255,255,255,.6);
-  text-decoration: none; border: 1px solid rgba(255,255,255,.18);
-  padding: 6px 12px; border-radius: 999px; white-space: nowrap;
+  position: absolute; right: clamp(16px, 3vw, 40px);
+  font-size: .8rem; color: rgba(255,255,255,.8); text-decoration: none;
 }
-.navstrip__back:hover { color: #fff; border-color: rgba(255,255,255,.4); }
+.navstrip__back:hover { color: #fff; }
 @media (max-width: 860px) { .navstrip__tabs { display: none; } }
 
-/* ---- the hero ---------------------------------------------------------------- */
+/* ---- the hero ------------------------------------------------------------ */
 .hero {
   position: relative;
   height: calc(100svh - var(--nav-h));
-  min-height: 480px;
+  min-height: 520px;
   overflow: hidden;
-  background: var(--ink);
+  background: var(--black);
   touch-action: pan-y;
   cursor: none;
 }
+@media (hover: none) { .hero { cursor: auto; } }
 .hero canvas {
   position: absolute; inset: 0; width: 100%; height: 100%; display: block;
-  opacity: 0; transition: opacity .9s ease;
+  opacity: 0; transition: opacity 1.2s var(--ease);
 }
 .hero.is-ready canvas { opacity: 1; }
-@media (hover: none) { .hero { cursor: auto; } }
 
 .hero__text {
   position: absolute; z-index: 2;
-  left: clamp(20px, 5.5vw, 88px);
-  top: clamp(24px, 7vh, 72px);
+  left: 50%; top: clamp(36px, 8.5vh, 88px);
+  width: min(92vw, 980px);
+  transform: translateX(-50%);
+  text-align: center;
   pointer-events: none; user-select: none;
-  max-width: min(640px, 80vw);
+  transition: opacity .5s var(--ease);
 }
 .hero__claim {
   margin: 0;
-  font-size: clamp(1.55rem, .9rem + 2.1vw, 3.1rem);
-  font-weight: 700;
-  line-height: 1.02;
-  letter-spacing: -.032em;
-  text-shadow: 0 2px 24px rgba(0,0,0,.45);
+  font-size: clamp(2.1rem, 1.1rem + 3.4vw, 4.4rem);
+  font-weight: 650;
+  line-height: 1.04;
+  letter-spacing: -.035em;
+  font-variation-settings: "opsz" 32;
+  color: var(--white);
+  text-shadow: 0 1px 30px rgba(0,0,0,.25);
 }
 .hero__line {
-  margin: clamp(10px, 1.6vh, 18px) 0 0;
-  max-width: 30ch;
-  font-size: clamp(1rem, .82rem + .62vw, 1.4rem);
-  font-weight: 500;
-  line-height: 1.3;
-  letter-spacing: -.012em;
-  color: rgba(255,255,255,.86);
-  text-shadow: 0 2px 18px rgba(0,0,0,.5);
+  margin: clamp(10px, 1.6vh, 16px) auto 0;
+  max-width: 34ch;
+  font-size: clamp(1.02rem, .86rem + .55vw, 1.4rem);
+  font-weight: 450;
+  line-height: 1.32;
+  letter-spacing: -.016em;
+  color: var(--text-2);
+  text-shadow: 0 1px 20px rgba(0,0,0,.35);
 }
 
-.hero__caption {
-  position: absolute; z-index: 2;
-  left: clamp(20px, 5.5vw, 88px); bottom: 18px;
-  margin: 0; max-width: 40ch;
-  font-size: .78rem; line-height: 1.45; color: rgba(255,255,255,.66);
+/* the entrance: up, in, and into focus, one line after the other */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); filter: blur(8px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+.hero__claim, .hero__line, .hero__pill { opacity: 0; }
+.hero.is-ready .hero__claim { animation: rise 1.1s var(--ease) .15s forwards; }
+.hero.is-ready .hero__line  { animation: rise 1.1s var(--ease) .35s forwards; }
+.hero.is-ready .hero__pill  { animation: rise 1s var(--ease) 1.4s forwards; }
+@media (prefers-reduced-motion: reduce) {
+  .hero.is-ready .hero__claim, .hero.is-ready .hero__line, .hero.is-ready .hero__pill { animation: none; opacity: 1; }
+}
+
+/* the one control: a frosted pill at the bottom, gone after first use */
+.hero__pill {
+  position: absolute; z-index: 3; left: 0; right: 0; bottom: 28px;
+  margin: 0;
+  display: flex; justify-content: center;
   pointer-events: none;
 }
-.hero__hint {
-  position: absolute; z-index: 2;
-  right: clamp(20px, 3vw, 40px); bottom: 18px;
-  margin: 0; font-size: .78rem; color: rgba(255,255,255,.66);
-  pointer-events: none;
-  transition: opacity .6s ease;
+.hero__pill span.pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 16px 9px 13px;
+  border-radius: 980px;
+  background: rgba(255,255,255,.12);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: inset 0 0 0 .5px rgba(255,255,255,.22);
+  font-size: .8rem; font-weight: 500; letter-spacing: -.005em;
+  color: rgba(255,255,255,.92);
+  white-space: nowrap;
 }
-.hero__hint.is-gone { opacity: 0; }
-.hero__hint .touch { display: none; }
-@media (hover: none) { .hero__hint .mouse { display: none; } .hero__hint .touch { display: inline; } }
+.hero__pill svg { width: 14px; height: 14px; flex: none; opacity: .9; }
+.hero__pill.is-gone { animation: none !important; opacity: 0 !important; transition: opacity .6s var(--ease); }
+.hero__pill .touch { display: none; }
+@media (hover: none) { .hero__pill .mouse { display: none; } .hero__pill .touch { display: inline; } }
 
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
 
-/* ---- below the fold: notes on the variant, not part of the design ---------- */
+/* ---- below the fold: notes on the variant, not part of the design ------- */
 .notes {
-  background: #fff; color: #1b221e;
-  padding: clamp(40px, 7vw, 88px) clamp(20px, 6vw, 96px) 64px;
+  background: #fff; color: var(--ink);
+  padding: clamp(64px, 10vw, 120px) 22px 96px;
+  letter-spacing: -.016em;
 }
-.notes__inner { max-width: 760px; }
-.notes__kicker { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--leaf-700); font-weight: 650; margin: 0 0 10px; }
-.notes h2 { font-size: 1.9rem; letter-spacing: -.025em; line-height: 1.1; margin: 0 0 18px; }
-.notes h3 { font-size: 1.05rem; margin: 30px 0 8px; }
-.notes p, .notes li { font-size: 1.02rem; line-height: 1.65; color: #2c3530; }
-.notes ul { padding-left: 1.2em; }
-.notes code { font-size: .9em; background: #f1f4f2; padding: 1px 5px; border-radius: 4px; }
+.notes__inner { max-width: 692px; margin: 0 auto; }
+.notes__kicker { font-size: 1.05rem; font-weight: 600; color: var(--ink-2); margin: 0 0 8px; letter-spacing: -.01em; }
+.notes h2 { font-size: clamp(2.2rem, 1.6rem + 2vw, 3rem); font-weight: 650; letter-spacing: -.035em; line-height: 1.06; margin: 0 0 28px; }
+.notes h3 { font-size: 1.3rem; font-weight: 650; letter-spacing: -.02em; margin: 44px 0 10px; }
+.notes p, .notes li { font-size: 1.13rem; line-height: 1.55; color: var(--ink); }
+.notes p { margin: 0 0 1.05em; }
+.notes ul { padding-left: 1.1em; margin: 0; }
+.notes li { margin-bottom: .4em; }
+.notes li::marker { color: var(--ink-2); }
+
 .switcher {
-  display: flex; flex-wrap: wrap; gap: 8px;
-  margin: 36px 0 0; padding: 0; list-style: none;
+  display: inline-flex; flex-wrap: wrap; gap: 2px;
+  margin: 56px 0 0; padding: 3px; list-style: none;
+  background: #f5f5f7; border-radius: 22px;
 }
 .switcher a {
-  display: inline-block; padding: 8px 14px; border-radius: 999px;
-  border: 1px solid #cfd8d2; color: #1b221e; text-decoration: none; font-size: .9rem;
+  display: inline-block; padding: 8px 16px; border-radius: 980px;
+  color: var(--ink); text-decoration: none; font-size: .9rem; font-weight: 500;
+  transition: background .2s var(--ease);
 }
-.switcher a:hover { border-color: var(--leaf-700); color: var(--leaf-700); }
-.switcher a[aria-current] { background: #1b221e; color: #fff; border-color: #1b221e; }
+.switcher a:hover { background: rgba(0,0,0,.05); }
+.switcher a[aria-current] { background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 0 0 .5px rgba(0,0,0,.06); }
 
-@media (max-width: 520px) {
-  .hero__caption { max-width: none; right: 20px; }
-  .hero__hint { display: none; }
-}
+/* ?still= renders (thumbnails) skip the entrance */
+.hero.is-still .hero__claim, .hero.is-still .hero__line { animation: none; opacity: 1; }
